@@ -1,14 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { ADD_ITEM } from "../../actions/actions";
-
-const MenuForm = () => {
+import { ADD_ITEM } from "../store/TipCalculator/actions/actions";
+import { PropTypes } from "prop-types";
+const MenuForm = ({ dispatch }) => {
 	const [recipeData, setRecipeData] = useState({
 		name: "",
 		price: 0.0,
 	});
-	const dispatch = useDispatch();
 	return (
 		<form className="mt-4 m-3 text-start">
 			<div className="mb-3">
@@ -70,6 +68,10 @@ const MenuForm = () => {
 			</div>
 		</form>
 	);
+};
+
+MenuForm.propTypes = {
+	dispatch: PropTypes.func,
 };
 
 export default MenuForm;

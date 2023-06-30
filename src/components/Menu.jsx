@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-
-import MenuForm from "./MenuForm";
-import MenuList from "./MenuList";
-import TipCalculator from "./TipCalculator";
+import TipSelect from "./TipSelect";
+import { MenuListContainer } from "../containers/MenuListContainer";
+import { MenuFormContainer } from "../containers/MenuFormContainer";
+import { TipSelectContainer } from "../containers/TipSelectContainer";
 const Menu = () => {
 	return (
 		<div className="container menu-section">
-			<MenuForm />
-			<MenuList />
-			<TipCalculator />
+			<MenuFormContainer />
+			<MenuListContainer />
+			<TipSelectContainer />
 		</div>
 	);
 };

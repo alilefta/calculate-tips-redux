@@ -63,3 +63,7 @@ label {
 h5 {
 	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
+.sub-total {
+	font-weight: bold;
+}

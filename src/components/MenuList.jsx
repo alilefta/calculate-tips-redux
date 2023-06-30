@@ -1,10 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
-import MenuItem from "./MenuItem";
-import { useSelector } from "react-redux";
-const MenuList = () => {
-	const items = useSelector((state) => state.menu);
-
+import { MenuItemContainer } from "../containers/MenuItemContainer";
+const MenuList = ({ items }) => {
 	return (
 		<div className="m-3">
 			<h2>Menu</h2>
@@ -16,7 +14,7 @@ const MenuList = () => {
 				style={{ padding: "0px" }}
 			>
 				{items && items.length > 0 ? (
-					items.map((item) => <MenuItem key={item.uuid} {...item} />)
+					items.map((item) => <MenuItemContainer key={item.uuid} {...item} />)
 				) : (
 					<p>No Items were found</p>
 				)}

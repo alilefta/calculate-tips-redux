@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { ADD_ITEM, REMOVE_ITEM } from "../../actions/actions";
-import { useDispatch } from "react-redux";
 
-const MenuItem = ({ uuid, name, price, quantity }) => {
-	const dispatch = useDispatch();
+const MenuItem = ({
+	updateQuantity,
+	updatePrice,
+	remove,
+	uuid,
+	name,
+	price,
+	quantity,
+}) => {
 	return (
 		<li className="menu-item py-2 rounded-1 px-3 my-3">
 			<h5 className="mt-2 mb-3">{name}</h5>
@@ -26,7 +31,7 @@ const MenuItem = ({ uuid, name, price, quantity }) => {
 							aria-describedby="basic-addon1"
 							id="menu-price"
 							value={price}
-							onChange={(e) => e}
+							onChange={(e) => updatePrice(e.target.value)}
 						/>
 					</div>
 				</div>
@@ -40,7 +45,7 @@ const MenuItem = ({ uuid, name, price, quantity }) => {
 						id="menu-quantity"
 						placeholder="0"
 						value={quantity}
-						onChange={(e) => e}
+						onChange={(e) => updateQuantity(e.target.value)}
 					/>
 				</div>
 				<div className="total-price col-sm-2 offset-sm-4 text-center">
@@ -50,7 +55,7 @@ const MenuItem = ({ uuid, name, price, quantity }) => {
 				<div className="col-sm-2 justify-content-end offset-sm-10">
 					<button
 						className="btn btn-outline-danger btn-sm "
-						onClick={() => dispatch({ type: REMOVE_ITEM, payload: uuid })}
+						onClick={() => remove(uuid)}
 					>
 						Remove
 					</button>
