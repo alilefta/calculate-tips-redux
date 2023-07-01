@@ -10,6 +10,7 @@ const MenuItem = ({
 	name,
 	price,
 	quantity,
+	totalPrice,
 }) => {
 	return (
 		<li className="menu-item py-2 rounded-1 px-3 my-3">
@@ -50,7 +51,7 @@ const MenuItem = ({
 				</div>
 				<div className="total-price col-sm-2 offset-sm-4 text-center">
 					<label htmlFor="total">Total</label>
-					<p className="m-0 mt-2">${parseFloat(price * quantity)}</p>
+					<p className="m-0 mt-2">${parseFloat(totalPrice)}</p>
 				</div>
 				<div className="col-sm-2 justify-content-end offset-sm-10">
 					<button

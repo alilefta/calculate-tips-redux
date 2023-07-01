@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { TIP_UPDATED } from "../store/TipCalculator/actions/actions";
 import { PropTypes } from "prop-types";
 const TipSelect = ({ tipPercentage, updateTip }) => {
 	return (

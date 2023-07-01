@@ -3,7 +3,7 @@
 import "./App.css";
 import Menu from "./components/Menu";
 import { Provider } from "react-redux";
-import { store } from "./store/TipCalculator/store/store";
+import { store } from "./store/store";
 function App() {
 	return (
 		<Provider store={store}>

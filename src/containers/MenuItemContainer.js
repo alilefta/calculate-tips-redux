@@ -4,7 +4,13 @@ import {
 	ITEM_PRICE_UPDATED,
 	ITEM_QUANTITY_UPDATED,
 	REMOVE_ITEM,
-} from "../store/TipCalculator/actions/actions";
+} from "../store/menu/actions";
+import { selectItemTotal } from "../store/selectors";
+
+const mapStateToProps = (state, ownProps) => {
+	const totalPrice = selectItemTotal(state, ownProps);
+	return { totalPrice: totalPrice.toFixed(2) };
+};
 const mapDispatchToProps = (dispatch, ownProps) => {
 	// this function also provide a second parameter "ownProps" props that can be used to access the props of the component
 	return {
@@ -22,4 +28,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	};
 };
 
-export const MenuItemContainer = connect(null, mapDispatchToProps)(MenuItem);
+export const MenuItemContainer = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(MenuItem);

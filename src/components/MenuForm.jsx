@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { ADD_ITEM } from "../store/TipCalculator/actions/actions";
+import { ADD_ITEM } from "../store/menu/actions";
 import { PropTypes } from "prop-types";
 const MenuForm = ({ dispatch }) => {
 	const [recipeData, setRecipeData] = useState({
