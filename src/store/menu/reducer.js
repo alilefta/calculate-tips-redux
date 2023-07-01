@@ -1,3 +1,4 @@
+import { produce } from "immer";
 import {
 	ADD_ITEM,
 	ITEM_PRICE_UPDATED,
@@ -6,7 +7,7 @@ import {
 } from "./actions";
 
 let id = 1;
-const initialState = [
+const initialMenu = [
 	{
 		uuid: id++,
 		name: "Pizza Margerita",
@@ -15,51 +16,29 @@ const initialState = [
 	},
 	{
 		uuid: id++,
-		name: "Tofu ",
+		name: "Kebab",
 		price: 20,
 		quantity: 1,
 	},
 ];
 
-export const menuReducer = (state = initialState, action) => {
+export const menuReducer = produce((state, action) => {
 	if (action.type === ADD_ITEM) {
-		return [
-			...state,
-			{
-				uuid: id++,
-				quantity: 1,
-				...action.payload,
-			},
-		];
+		const item = { uuid: id++, quantity: 1, ...action.payload };
+		state.push(item);
 	}
 
 	if (action.type === REMOVE_ITEM) {
-		return [...state.filter((item) => item.uuid !== action.payload)];
+		return state.filter((item) => item.uuid !== action.payload);
 	}
 
 	if (action.type === ITEM_PRICE_UPDATED) {
-		const updatedMenu = state.map((item) => {
-			if (item.uuid === action.payload.uuid) {
-				return { ...item, price: action.payload.price };
-			} else {
-				return item;
-			}
-		});
-
-		return [...updatedMenu];
+		const item = state.find((item) => item.uuid === action.payload.uuid);
+		item.price = parseFloat(action.payload.price);
 	}
 
 	if (action.type === ITEM_QUANTITY_UPDATED) {
-		const updatedMenu = state.map((item) => {
-			if (item.uuid === action.payload.uuid) {
-				return { ...item, quantity: action.payload.quantity };
-			} else {
-				return item;
-			}
-		});
-
-		return [...updatedMenu];
+		const item = state.find((item) => item.uuid === action.payload.uuid);
+		item.quantity = parseFloat(action.payload.quantity);
 	}
-
-	return state;
-};
+}, initialMenu);
