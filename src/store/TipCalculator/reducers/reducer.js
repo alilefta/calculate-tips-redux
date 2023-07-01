@@ -33,6 +33,7 @@ export const reducer = (state = initialState, action) => {
 				...state.menu,
 				{
 					uuid: id++,
+					quantity: 1,
 					...action.payload,
 				},
 			],
@@ -83,5 +84,6 @@ export const reducer = (state = initialState, action) => {
 		};
 	}
 
+	// Calculate tips and total
 	return state;
 };

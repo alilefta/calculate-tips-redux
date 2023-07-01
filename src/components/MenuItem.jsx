@@ -50,7 +50,7 @@ const MenuItem = ({
 				</div>
 				<div className="total-price col-sm-2 offset-sm-4 text-center">
 					<label htmlFor="total">Total</label>
-					<p className="m-0 mt-2">$0.00</p>
+					<p className="m-0 mt-2">${parseFloat(price * quantity)}</p>
 				</div>
 				<div className="col-sm-2 justify-content-end offset-sm-10">
 					<button
